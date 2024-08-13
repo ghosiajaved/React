@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
 
 export default function State() {
     // count is the current state and set count allows you to change this current state
+
     const [count, setcount] = useState(() => {
         return 6;
     })
@@ -31,13 +32,26 @@ export default function State() {
         });
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log("Component Updated...");
 
-        return ()=>{
+        return () => {
             console.log("Component Removed");
         }
-    },[count])
+    }, [count])
+
+    const buttonRef = useRef(null);
+
+    const handleClick = () => {
+      if (buttonRef.current) {
+        console.log("-----Button clicked-----");
+      }
+    };
+
+    const [count1, setcount1] = useState(30);
+    const showcount= useCallback(()=>{    //prevents unnecessary re-rendering of children
+        alert(`Count ${count1}`);
+    },[count1])
 
     return (
         <div>
@@ -57,7 +71,16 @@ export default function State() {
                 <h1>{car.brand}</h1>
                 <p> It is a {car.color} car from {car.year}</p>
                 <button type="button" onClick={updateColor}>Update Color</button>
+                <br></br><br></br>
+                <h4>USEREF()</h4><br></br>
+                <button ref={buttonRef} onClick={handleClick}>Click Me</button>
+                <br></br><br></br>
+                <h4>USECALLBACK()</h4><br></br>
+                <button onClick={showcount}>Click Me</button>
+               
             </center>
         </div>
     )
 }
+
+
