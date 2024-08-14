@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Btn from './Btn'
 
 
 export default function Navbar(props) {
@@ -43,7 +42,7 @@ export default function Navbar(props) {
                 </nav>
             </nav>
 
-            <Btn />
+
 
         </div>
     )
