@@ -30,10 +30,29 @@ export default function List() {
         { name: 'Spicy Potato chips', price: 300 },
         { name: 'Hersheys bar', price: 150 },
     ];
-
-
     const totalAmount = products.reduce((accumulator, product) => accumulator + product.price, 0);
 
+    //keys
+    const fruits = [
+        { id: 1, name: "Apple", price: 250 },
+        { id: 2, name: "Mango", price: 350 },
+        { id: 3, name: "Peach", price: 150 }
+    ]
+    const fruitsList = fruits.map(fruit => <p>{fruit.id}. {fruit.name}</p>)
+
+    const person = [
+        { id: 1, name: "Rehan", age: 25, skill: "MERN" },
+        { id: 2, name: "Rohan", age: 27, skill: "MEAN" },
+        { id: 3, name: "Roham", age: 21, skill: "MERN" }
+    ]
+    //keys are always unique
+    const personList = person.map((person) => (
+        <li key={person.id}>
+        <p>Name: {person.name}</p>
+        <p>Age: {person.age}</p>
+        <p>Skill: {person.skill}</p>
+        </li>
+    ));
 
 
     return (
@@ -69,6 +88,17 @@ export default function List() {
             <h3>Using Reduce Method </h3><br></br>
             <p>Total Price: Rs.{totalAmount}</p>
             <br></br>
+
+            <h3>KEYS</h3><br></br>
+            <h5>Example 1</h5><br></br>
+            {fruitsList}
+            <br></br>
+            <h5>Example 2</h5><br></br>
+            <ul>{personList}</ul>
+            <br></br>
+
+
+
 
 
 
