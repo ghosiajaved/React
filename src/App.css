@@ -35,5 +35,18 @@
 }
 
 .container{
-  text-align: center;
+  text-align: left;
+  display: flex;
+}
+
+.left-section, .right-section {
+  flex: 1; 
+}
+
+label {
+  margin-right: 10px; 
+}
+
+input{
+  margin-right: 50px;
 }
